@@ -7,27 +7,33 @@
 	var reconnectTimeout = 2000;
 	var host="broker.emqx.io";
 	var port=8083;
+	var location_array = [0,0];
 	function initGeolocation() {
 	 if (navigator && navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+				console.log("yo");
 			} else {
 				console.log('Geolocation is not supported');
 			}
 	}
-
+	 
 	function errorCallback() {}
-
+	 
 	function successCallback(position) {
+		location_array[0] = position.coords.latitude;
+		location_array[1] = position.coords.longitude;
+		console.log("hami");
+		message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
+		message.destinationName = "sensor1";
+		mqtt.send(message);
 		x = document.getElementById("test");
 		test.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
 		}
 	function onConnect(){
 	console.log("Connected");
-	message = new Paho.MQTT.Message("hello world");
-	message.destinationName = "sensor1";
-	mqtt.send(message);
-	}
 
+	}
+	
 	function MQTTconnect() {
 	console.log("connecting to " + host + " " + port);
 	mqtt = new Paho.MQTT.Client(host,port,"clientjs");
@@ -44,8 +50,8 @@
 	<div id="test">Loading...</div> 
 	<script>
 		//init();
-		initGeolocation();
 		MQTTconnect();
+		var intervalID = setInterval(initGeolocation,5000);
 	</script>
 </body>
-</html> 
+</html>
