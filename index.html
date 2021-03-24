@@ -31,9 +31,10 @@
 		}
 	function handleOrientation(event) {
 	  console.log(event)
-	  var x = event.alpha;  // In degree in the range [-180,180)
-	  var y = event.beta; // In degree in the range [-90,90)
-	  console.log(y)
+	  var l = event.alpha;  // In degree in the range [-180,180)
+	  var k = event.beta; // In degree in the range [-90,90)
+	  var y = document.getElementById("test2");
+	  y.innerHTML = l;
 	}
 	if(window.DeviceOrientationEvent){
 	  window.addEventListener("deviceorientation", handleOrientation, false);
