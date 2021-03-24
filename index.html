@@ -27,8 +27,19 @@
 		message.destinationName = "sensor1";
 		mqtt.send(message);
 		x = document.getElementById("test");
-		test.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
+		x.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
 		}
+	function handleOrientation(event) {
+	  console.log(event)
+	  var x = event.alpha;  // In degree in the range [-180,180)
+	  var y = event.beta; // In degree in the range [-90,90)
+	  console.log(y)
+	}
+	if(window.DeviceOrientationEvent){
+	  window.addEventListener("deviceorientation", handleOrientation, false);
+	}else{
+	  console.log("DeviceMotionEvent is not supported");
+	}
 	function onConnect(){
 	console.log("Connected");
 
@@ -47,7 +58,8 @@
 </head>
 <body>
 	<h1>Main Body</h1>
-	<div id="test">Loading...</div> 
+	<div id="test">Loading...</div>
+	<div id="test2">Acceleration...</div>
 	<script>
 		//init();
 		MQTTconnect();
