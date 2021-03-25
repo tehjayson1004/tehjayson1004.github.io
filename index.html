@@ -94,21 +94,21 @@
 	  console.log("DeviceOrientationEvent is not supported");
 	}
 	if(window.DeviceMotionEvent){
-	  window.addEventListener("devicemotion", handleMotion, false);
+	  window.addEventListener("devicemotion", handleMotion, true);
 	}else{
 	  console.log("DeviceMotionEvent is not supported");
 	}
 	function handleMotion(acl){
 		//acl.start();
-		//console.log(acl);
+		console.log(acl);
 		z = document.getElementById("test3");
 		//acl.addEventListener('reading', () => {
-		z.innerHTML ="Acceleration along the X-axis: " + acl.x + 
-		"<br>Acceleration along the Y-axis: " + acl.y +
-		"<br>Acceleration along the Z-axis: " + acl.z;
+		z.innerHTML ="Acceleration along the X-axis: " + acl.acceleration.x + 
+		"<br>Acceleration along the Y-axis: " + acl.acceleration.y +
+		"<br>Acceleration along the Z-axis: " + acl.acceleration.z;
 		//});
 		//demo2.innerHTML = "Accelerometer not activated.";
-		acc_message = new Paho.MQTT.Message(acl.x + "," + acl.y + "," + acl.z);
+		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z);
 		acc_message.destinationName = "acc" + driver_id;
 		client.send(acc_message);
 		console.log("Acceleration Published");
