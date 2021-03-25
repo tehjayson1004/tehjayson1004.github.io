@@ -9,7 +9,7 @@
 	var port=443;
 	var location_array = [0,0];
 	// Create a client instance
-    client = new Paho.MQTT.Client(host, port,"client_id");
+    var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
 
     // set callback handlers
@@ -68,7 +68,7 @@
 		console.log("hami");
 		message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
 		message.destinationName = "sensor1";
-		mqtt.send(message);
+		client.send(message);
 		x = document.getElementById("test");
 		x.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
 		}
