@@ -7,11 +7,12 @@
 	var reconnectTimeout = 2000;
 	var host="outstanding-engineer.cloudmqtt.com";
 	var port=443;
+	var acl = new Accelerometer({frequency:60});
 	var location_array = [0,0];
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
-
+	
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
@@ -84,15 +85,28 @@
 	}else{
 	  console.log("DeviceOrientationEvent is not supported");
 	}
-
+	
+	function getAcceleration(){
+		acl.start();
+		console.log(acl);
+		z = document.getElementById("test3");
+		acl.addEventListener('reading', () => {
+		z.innerHTML ="Acceleration along the X-axis " + acl.x + 
+		"<br>Acceleration along the Y-axis " + acl.y +
+		"<br>Acceleration along the Z-axis " + acl.z;
+		});
+		//demo2.innerHTML = "Accelerometer not activated.";
+	}
   </script>
 </head>
 <body>
 	<h1>Main Body</h1>
 	<div id="test">Loading...</div>
-	<div id="test2">Acceleration...</div>
+	<div id="test2">Orientation...</div>
+	<div id="test3">Acceleration...</div>
 	<script>
 		//init();
+		getAcceleration();
 		window.setInterval(initGeolocation,1000);
 	</script>
 </body>
