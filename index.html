@@ -85,6 +85,7 @@
 		"<br>Gamma: " + gamma;
 		orient_message = new Paho.MQTT.Message(absolute + "," + alpha + "," + beta + "," + gamma);
 		orient_message.destinationName = "orient" + driver_id;
+		client.send(orient_msg);
 	}
 	if(window.DeviceOrientationEvent){
 	  window.addEventListener("deviceorientation", handleOrientation, false);
@@ -104,6 +105,7 @@
 		//demo2.innerHTML = "Accelerometer not activated.";
 		acc_message = new Paho.MQTT.Message(acl.x + "," + acl.y + "," + acl.z);
 		acc_message.destinationName = "acc" + driver_id;
+		client.send(acc_message);
 	}
 	
 	function getDriverId() {
