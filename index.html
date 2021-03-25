@@ -101,11 +101,12 @@
 	  // playback is a value between 0 and 1
 	  // being 0 the start of the animation and 1 its end
 	  let playback = elapsedTime / duration;
-	  console.log(playback);
+	  //console.log(playback);
 	  if (playback > 1) {
-		console.log(playback);
+		//console.log(playback);
 		updateTarget(playback);
 		startedAt = Date.now();
+		requestAnimationFrame(update)
 		}
 	  if (playback > 0) {
 		// Queue the next frame
