@@ -9,10 +9,8 @@
 	var host="outstanding-engineer.cloudmqtt.com";
 	var port=443;
 	var acl = new Accelerometer({frequency:60});
-	var parser = new UAParser();
-	var result = parser.getResult();
-	console.log(result.device);
-	alert(result.device.vendor);
+	var driver_id = -1;
+	console.log(window.navigator);
 	var location_array = [0,0];
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
@@ -36,10 +34,6 @@
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
-    client.subscribe("/cloudmqtt");
-    message = new Paho.MQTT.Message("Hello CloudMQTT");
-    message.destinationName = "/cloudmqtt";
-    client.send(message);
     }
 
     function doFail(e){
@@ -72,18 +66,25 @@
 		location_array[0] = position.coords.latitude;
 		location_array[1] = position.coords.longitude;
 		console.log("hami");
-		message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
-		message.destinationName = "sensor1";
-		client.send(message);
+		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
+		gps_message.destinationName = "gps" + driver_id;
+		client.send(gps_message);
 		x = document.getElementById("test");
 		x.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
 		}
 	function handleOrientation(event) {
-	  console.log(event)
-	  var l = event.alpha;  // In degree in the range [-180,180)
-	  var k = event.beta; // In degree in the range [-90,90)
-	  var y = document.getElementById("test2");
-	  y.innerHTML = l;
+		console.log(event)
+		var absolute = event.absolute;
+		var alpha    = event.alpha;
+		var beta     = event.beta;
+		var gamma    = event.gamma;
+		var y = document.getElementById("test2");
+		y.innerHTML = "Absolute: " + absolute + 
+		"<br>Alpha: " + alpha +
+		"<br>Beta: " + beta +
+		"<br>Gamma: " + gamma;
+		orient_message = new Paho.MQTT.Message(absolute + "," + alpha + "," + beta + "," + gamma);
+		orient_message.destinationName = "orient" + driver_id;
 	}
 	if(window.DeviceOrientationEvent){
 	  window.addEventListener("deviceorientation", handleOrientation, false);
@@ -96,16 +97,35 @@
 		console.log(acl);
 		z = document.getElementById("test3");
 		acl.addEventListener('reading', () => {
-		z.innerHTML ="Acceleration along the X-axis " + acl.x + 
-		"<br>Acceleration along the Y-axis " + acl.y +
-		"<br>Acceleration along the Z-axis " + acl.z;
+		z.innerHTML ="Acceleration along the X-axis: " + acl.x + 
+		"<br>Acceleration along the Y-axis: " + acl.y +
+		"<br>Acceleration along the Z-axis: " + acl.z;
 		});
 		//demo2.innerHTML = "Accelerometer not activated.";
+		acc_message = new Paho.MQTT.Message(acl.x + "," + acl.y + "," + acl.z);
+		acc_message.destinationName = "acc" + driver_id;
+	}
+	
+	function getDriverId() {
+		pw = document.getElementById("pw");
+		console.log(pw.value)
+		switch (pw.value) {
+			case "tehjayson":
+				driver_id = 1;
+				break;
+			default:
+				driver_id = -1;
+		}
+		console.log(driver_id);
 	}
   </script>
 </head>
 <body>
-	<h1>Main Body</h1>
+	<h1>FleetHub</h1>
+	<form id="frm1" action="/action_page.php">
+	  Password: <input id="pw" type="password" name="password"><br>
+	  <input type="button" value="Enter" onclick="getDriverId()"></input>
+	</form> 
 	<div id="test">Loading...</div>
 	<div id="test2">Orientation...</div>
 	<div id="test3">Acceleration...</div>
