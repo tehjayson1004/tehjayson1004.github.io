@@ -5,9 +5,52 @@
   <script type="text/javascript">
 	var mqtt;
 	var reconnectTimeout = 2000;
-	var host="broker.hivemq.com";
-	var port=8000;
+	var host="outstanding-engineer.cloudmqtt.com";
+	var port=443;
 	var location_array = [0,0];
+	// Create a client instance
+    client = new Paho.MQTT.Client(host, port,"client_id");
+    //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
+
+    // set callback handlers
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+    var options = {
+    useSSL: true,
+    userName: "odzguzja",
+    password: "XIC7binxmQ8e",
+    onSuccess:onConnect,
+    onFailure:doFail
+    }
+
+    // connect the client
+    client.connect(options);
+
+    // called when the client connects
+    function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+    console.log("onConnect");
+    client.subscribe("/cloudmqtt");
+    message = new Paho.MQTT.Message("Hello CloudMQTT");
+    message.destinationName = "/cloudmqtt";
+    client.send(message);
+    }
+
+    function doFail(e){
+    console.log(e);
+    }
+
+    // called when the client loses its connection
+    function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log("onConnectionLost:"+responseObject.errorMessage);
+      }
+    }
+
+    // called when a message arrives
+    function onMessageArrived(message) {
+    console.log("onMessageArrived:"+message.payloadString);
+    }
 	function initGeolocation() {
 	 if (navigator && navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -39,22 +82,8 @@
 	if(window.DeviceOrientationEvent){
 	  window.addEventListener("deviceorientation", handleOrientation, false);
 	}else{
-	  console.log("DeviceMotionEvent is not supported");
+	  console.log("DeviceOrientationEvent is not supported");
 	}
-	function onConnect(){
-	console.log("Connected");
-
-	}
-	
-	function MQTTconnect() {
-	console.log("connecting to " + host + " " + port);
-	mqtt = new Paho.MQTT.Client(host,port,"clientjs");
-	var options = {
-	timeout: 3,
-	onSuccess: onConnect,
-	};
-	mqtt.connect(options);
-	};
   </script>
 </head>
 <body>
@@ -63,7 +92,6 @@
 	<div id="test2">Acceleration...</div>
 	<script>
 		//init();
-		MQTTconnect();
 		var intervalID = setInterval(initGeolocation,5000);
 	</script>
 </body>
