@@ -115,7 +115,7 @@
 		var end_time = now.getTime();
 		var dt_acc = end_time - acc_start;
 		//demo2.innerHTML = "Accelerometer not activated.";
-		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z + "," + acc_start);
+		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z + "," + now.getTime());
 		acc_start = end_time;
 		acc_message.destinationName = "acc" + driver_id;
 		client.send(acc_message);
