@@ -122,16 +122,7 @@
 		console.log("Acceleration Published");
 	}
 	  
-	var gyroscope = new Gyroscope({frequency: 60});
-	
-	function getGyroscope() {
-		gyroscope.addEventListener('reading', ( ) => {
-  		test4.innerHTML = "Gyroscope X-axis " + gyroscope.x +
-  		"<br>Gyroscope Y-axis " + gyroscope.y  + "<br>Gyroscope Z-axis " + gyroscope.z;
-		});
-		gyroscope.start();
-	}	 
-	
+
 	function getDriverId() {
 		pw = document.getElementById("pw");
 		console.log(pw.value)
