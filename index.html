@@ -121,6 +121,16 @@
 		client.send(acc_message);
 		console.log("Acceleration Published");
 	}
+	  
+	var gyroscope = new Gyroscope({frequency: 60});
+	
+	function getGyroscope() {
+		gyroscope.addEventListener('reading', ( ) => {
+  		test4.innerHTML = "Gyroscope X-axis " + gyroscope.x +
+  		"<br>Gyroscope Y-axis " + gyroscope.y  + "<br>Gyroscope Z-axis " + gyroscope.z;
+		});
+		gyroscope.start();
+	}	 
 	
 	function getDriverId() {
 		pw = document.getElementById("pw");
@@ -137,6 +147,7 @@
 		}
 		console.log(driver_id);
 		document.getElementById("start").style.display = "block";
+		document.getElementById("pass").style.display = "none";
 	}
 	
 	function startWork() {
@@ -192,10 +203,12 @@
 </head>
 <body>
 	<h1>FleetHub</h1>
+	<div id = "pass">
 	<form id="frm1" action="/action_page.php">
 	  Password: <input id="pw" type="password" name="password"><br>
 	  <input type="button" value="Enter" onclick="getDriverId()"></input>
 	</form> 
+	</div>
 	
 	<div id = "start"  style="display : none">
 		<p>CLICK HERE TO START WORK</p>
