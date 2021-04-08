@@ -137,6 +137,17 @@
 		}
 		console.log(driver_id);
 	}
+	  
+	  
+	function showData() {
+  		var x = document.getElementById("data");
+  		if (x.style.display === "none") {
+   			 x.style.display = "block";
+  		} else {
+    			x.style.display = "none";
+  		}
+	}
+	  
   </script>
 </head>
 <body>
@@ -145,9 +156,15 @@
 	  Password: <input id="pw" type="password" name="password"><br>
 	  <input type="button" value="Enter" onclick="getDriverId()"></input>
 	</form> 
-	<div id="test">Loading...</div>
-	<div id="test2">Orientation...</div>
-	<div id="test3">Acceleration...</div>
+	
+	<button onclick="showData()">Show Data</button>
+	<div id="data" display="block">
+		<div id="test">Loading...</div>
+		<div id="test2">Orientation...</div>
+		<div id="test3">Acceleration...</div>
+	</div>
+	
+	
 	<script>
 		//init();
 		window.setInterval(initGeolocation,5000);
