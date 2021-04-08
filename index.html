@@ -13,6 +13,7 @@
 	var dt_orient = 0;
 	//var acl = new Accelerometer({frequency:60});
 	var driver_id = -1;
+	var corr  = 0;
 	console.log(window.navigator);
 	var location_array = [0,0];
 	// Create a client instance
@@ -129,16 +130,21 @@
 		switch (pw.value) {
 			case "tehjayson":
 				driver_id = 1;
+				corr = 1;
 				break;
 			case "tanweiyang":
 				driver_id = 2;
+				corr  =1;
 				break;
 			default:
 				driver_id = -1;
+				alert("WRONG PASSWORD");
 		}
 		console.log(driver_id);
-		document.getElementById("start").style.display = "block";
-		document.getElementById("pass").style.display = "none";
+		if (corr  ==1)){
+			document.getElementById("start").style.display = "block";
+			document.getElementById("pass").style.display = "none";
+		}
 	}
 	
 	function startWork() {
