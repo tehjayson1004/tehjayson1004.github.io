@@ -171,7 +171,7 @@
 
 			rchlong = position.coords.longitude;
 			rchlat = position.coords.latitude;
-			gps = new Paho.MQTT.Message(rchlong + "," + rchlat);
+			gps = new Paho.MQTT.Message(driver_id + "," + rchlong + "," + rchlat);
   			gps.destinationName = "REACH" + driver_id;
   			client.send(gps);
  			alert("ALERT SENT TO CONTROL CENTER");
