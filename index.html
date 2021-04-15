@@ -60,7 +60,7 @@
     }
 	function initGeolocation() {
 	 if (navigator && navigator.geolocation) {
-				navigator.geolocation.watchPosition(successCallback, errorCallback);
+				navigator.geolocation.watchPosition(successCallback, errorCallback, {enableHighAccuracy: true} );
 				console.log("yo");
 			} else {
 				console.log('Geolocation is not supported');
