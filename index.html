@@ -11,11 +11,14 @@
 	var now = new Date();
 	var acc_start = now.getTime();
 	var dt_orient = 0;
+	var prev_loc = 0;
+	var prev_time = 0;
 	//var acl = new Accelerometer({frequency:60});
 	var driver_id = -1;
 	var corr  = 0;
 	console.log(window.navigator);
 	var location_array = [0,0];
+	float speed = 0;
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -69,6 +72,38 @@
 	function successCallback(position) {
 		location_array[0] = position.coords.latitude;
 		location_array[1] = position.coords.longitude;
+		if (prev_loc == 0)
+		{
+			prev_loc = location_array;
+			prev_time = new Date.now();
+		}
+		else
+		{
+			let lat1 = location_array[0];
+			let lat2 = prev_loc[0];
+			let lon1 = location_array[1];
+			let lon2 = prev_loc[1];
+			/*const R = 6371e3; // metres
+			const phi1 = lat1 * Math.PI/180; // φ, λ in radians
+			const phi2 = lat2 * Math.PI/180;
+			const del_phi = (lat2-lat1) * Math.PI/180;
+			const del_lambd = (lon2-lon1) * Math.PI/180;
+		
+			const a = Math.sin(del_phi/2) * Math.sin(del_phi/2) +
+			  Math.cos(phi1) * Math.cos(phi2) *
+			  Math.sin(del_lambd/2) * Math.sin(del_lambd/2);
+			const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+			*/
+			const alpha = 100000;
+			distance = alpha*Math.sqrt(Math.pow((lat1-lat2),2) + Math.pow((lon1-lon2),2));
+			const d = distance; // in metres
+			float td = new Date.now() - prev_time;
+			speed = d/td;
+			prev_loc = location_array();
+			prev_time = new Date.now();
+			z = document.getElementById("test5");
+			z.innerHTML = "Speed: " + speed;
+		}
 		console.log("hami");
 		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
 		gps_message.destinationName = "gps" + driver_id;
@@ -160,6 +195,7 @@
 	<div id="test2">Orientation...</div>
 	<div id="test3">Acceleration...</div>
 	<div id="test4">Gyroscope...</div>
+	<div id="test5">Speed...</div>
 
 	
 	
