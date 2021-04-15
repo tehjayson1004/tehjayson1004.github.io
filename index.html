@@ -75,7 +75,7 @@
 		if (prev_loc == 0)
 		{
 			prev_loc = location_array;
-			prev_time = new Date.now();
+			prev_time = new Date.getTime();
 		}
 		else
 		{
@@ -97,7 +97,7 @@
 			const alpha = 100000;
 			distance = alpha*Math.sqrt(Math.pow((lat1-lat2),2) + Math.pow((lon1-lon2),2));
 			const d = distance; // in metres
-			var td = new Date.now() - prev_time;
+			var td = new Date.getTime() - prev_time;
 			speed = d/(td/1000)*3.6;
 			prev_loc = location_array();
 			prev_time = new Date.now();
