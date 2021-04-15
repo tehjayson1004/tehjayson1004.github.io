@@ -60,7 +60,7 @@
     }
 	function initGeolocation() {
 	 if (navigator && navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(successCallback, errorCallback,{maximumAge: 600000});
+				navigator.geolocation.watchPosition(successCallback, errorCallback);
 				console.log("yo");
 			} else {
 				console.log('Geolocation is not supported');
@@ -204,7 +204,7 @@
 	
 	<script>
 		//init();
-		window.setInterval(initGeolocation,10);
+		initGeolocation();
 	</script>
 </body>
 </html>
