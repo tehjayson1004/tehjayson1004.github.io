@@ -235,6 +235,27 @@
 		}
 	}
 	
+	function sub_mqtt_msg() {
+	//host && port defined above
+
+	client = new Paho.MQTT.Client(host, port,"");
+	client.onMessageArrived = onMessageArrived;
+	client.connect({onSuccess:onConnect});
+	document.getElementById("submsg").innerHTML = "Trying to connect...";
+	}
+	
+	function onConnect() {
+		document.getElementById("submsg").innerHTML = "New connection made...";
+		var mqtt_destname = "next_loc";
+		client.subscribe(mqtt_destname);
+		document.getElementById("submsg").innerHTML = "Subscribing to topic: " + mqtt_destname + " ...";
+	}
+	
+	function onMessageArrived(message) {
+		var result = message.destinationName + " : " + message.payloadString + "";
+		document.getElementById("submsg").innerHTML = result;
+	}
+	
   </script>
 </head>
 <body>
@@ -262,11 +283,9 @@
 	</div> 
 		
 	<div id="data" style="display : none">
-		<div id="test">Loading...</div>
-		<div id="test2">Orientation...</div>
-		<div id="test3">Acceleration...</div>
-		<div id="test4">Gyroscope...</div>
+		<div id="test">Loading GPS...</div>
 		<div id="test5">Speed...</div>
+		<div id="heading">Loading Next Location...</div>
 	</div>
 
 	
@@ -274,7 +293,7 @@
 	<script>
 		//init();
 		initGeolocation();
-		// success version on 14/4/2021
+		// success version on 
 	</script>
 </body>
 </html>
