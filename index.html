@@ -190,7 +190,6 @@
 	
 	function sub_mqtt_msg() {
 	//host && port defined above
-	client = new Paho.MQTT.Client(host, port,"");
 	client.onMessageArrived = onMessageArrived2;
 	client.connect({onSuccess:onConnect2});
 	document.getElementById("submsg").innerHTML = "Trying to connect...";
