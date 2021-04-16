@@ -107,60 +107,13 @@
 			z = document.getElementById("test5");
 			z.innerHTML = "Speed: " + speed;
 		}
-		console.log("hami");
 		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
 		gps_message.destinationName = "gps" + driver_id;
 		client.send(gps_message);
 		x = document.getElementById("test");
 		x.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
 		}
-	function handleOrientation(event) {
-		console.log(event)
-		var absolute = event.absolute;
-		var alpha    = event.alpha;
-		var beta     = event.beta;
-		var gamma    = event.gamma;
-		var y = document.getElementById("test2");
-		
-		y.innerHTML = "Absolute: " + absolute + 
-		"<br>Alpha: " + alpha +
-		"<br>Beta: " + beta +
-		"<br>Gamma: " + gamma;
-		orient_message = new Paho.MQTT.Message(absolute + "," + alpha + "," + beta + "," + gamma);
-		orient_message.destinationName = "orient" + driver_id;
-		client.send(orient_message);
-		console.log("Orientation Published");
-	}
-	if(window.DeviceOrientationEvent){
-	  window.addEventListener("deviceorientation", handleOrientation, false);
-	}else{
-	  console.log("DeviceOrientationEvent is not supported");
-	}
-	if(window.DeviceMotionEvent){
-	  window.addEventListener("devicemotion", handleMotion, true);
-	}else{
-	  console.log("DeviceMotionEvent is not supported");
-	}
-	function handleMotion(acl){
-		//acl.start();
-		console.log(acl);
-		z = document.getElementById("test3");
-		//acl.addEventListener('reading', () => {
-		z.innerHTML ="Acceleration along the X-axis: " + acl.acceleration.x + 
-		"<br>Acceleration along the Y-axis: " + acl.acceleration.y +
-		"<br>Acceleration along the Z-axis: " + acl.acceleration.z;
-		//});
-		var now = new Date();
-		var end_time = now.getTime();
-		var dt_acc = end_time - acc_start;
-		//demo2.innerHTML = "Accelerometer not activated.";
-		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z + "," + dt_acc);
-		acc_start = end_time;
-		acc_message.destinationName = "acc" + driver_id;
-		client.send(acc_message);
-		console.log("Acceleration Published");
-	}
-	  
+	
 
 	function getDriverId() {
 		pw = document.getElementById("pw");
