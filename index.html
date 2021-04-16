@@ -239,19 +239,19 @@
 	//host && port defined above
 
 	client = new Paho.MQTT.Client(host, port,"");
-	client.onMessageArrived = onMessageArrived;
-	client.connect({onSuccess:onConnect});
+	client.onMessageArrived = onMessageArrived2;
+	client.connect({onSuccess:onConnect2});
 	document.getElementById("submsg").innerHTML = "Trying to connect...";
 	}
 	
-	function onConnect() {
+	function onConnect2() {
 		document.getElementById("submsg").innerHTML = "New connection made...";
 		var mqtt_destname = "next_loc";
 		client.subscribe(mqtt_destname);
 		document.getElementById("submsg").innerHTML = "Subscribing to topic: " + mqtt_destname + " ...";
 	}
 	
-	function onMessageArrived(message) {
+	function onMessageArrived2(message) {
 		var result = message.destinationName + " : " + message.payloadString + "";
 		document.getElementById("submsg").innerHTML = result;
 	}
