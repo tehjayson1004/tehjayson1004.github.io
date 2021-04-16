@@ -40,7 +40,9 @@
     // called when the client connects
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
+   	console.log("onConnect");
+	var mqtt_destname = "next_loc";
+	client.subscribe(mqtt_destname);
     }
 
     function doFail(e){
@@ -56,8 +58,11 @@
 
     // called when a message arrives
     function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
+    	console.log("onMessageArrived:"+message.payloadString);
+	var result = message.destinationName + " : " + message.payloadString + "";
+	document.getElementById("submsg").innerHTML = result;
     }
+	  
 	function initGeolocation() {
 	 if (navigator && navigator.geolocation) {
 				navigator.geolocation.watchPosition(successCallback, errorCallback, {enableHighAccuracy: true} );
@@ -188,16 +193,6 @@
 		}
 	}
 	
-	function sub_mqtt_msg() {
-	//host && port defined above
-	client.onMessageArrived = onMessageArrived2;
-	document.getElementById("submsg").innerHTML = "Trying to connect...";
-	}
-	
-	function onMessageArrived2(message) {
-		var result = message.destinationName + " : " + message.payloadString + "";
-		document.getElementById("submsg").innerHTML = result;
-	}
 	
   </script>
 </head>
