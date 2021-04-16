@@ -191,15 +191,7 @@
 	function sub_mqtt_msg() {
 	//host && port defined above
 	client.onMessageArrived = onMessageArrived2;
-	client.connect({onSuccess:onConnect2});
 	document.getElementById("submsg").innerHTML = "Trying to connect...";
-	}
-	
-	function onConnect2() {
-		document.getElementById("submsg").innerHTML = "New connection made...";
-		var mqtt_destname = "next_loc";
-		client.subscribe(mqtt_destname);
-		document.getElementById("submsg").innerHTML = "Subscribing to topic: " + mqtt_destname + " ...";
 	}
 	
 	function onMessageArrived2(message) {
