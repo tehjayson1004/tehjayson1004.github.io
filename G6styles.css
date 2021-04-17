@@ -1,69 +1,75 @@
 body {
-	background-color: #FFFACD;
-	width: 100vw;
-    	height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFACD;
 }
 
 #pass {
-	position: absolute;
-	color: black;
-	top:45%;
-	left:  35%;
+	position: 	absolute;
+	color: 		black;
+	top:  		45%;
+	left:  		45%;
 }	
 
 .inpass{
-	font-size: 200%;
-	font-family: "Comic Sans MS", "Comic Sans", cursive;
-	font-weight: bold;
-	color: #A020F0;
-	text-align: center;
+	font-size: 		200%;
+	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
+	font-weight: 	bold;
+	color: 			#A020F0;
+	left:  			45%;
 }
 
 .twopass{
-	font-size: 200%;
-	font-family: "Comic Sans MS", "Comic Sans", cursive;
-	font-weight: bold;
-	color: #BA55D3;
-	text-align: center;
+	font-size: 		200%;
+	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
+	font-weight: 	bold;
+	color: 			#BA55D3;
+	left:  			45%;
 }
 
+.stxt{
+	font-size: 		200%;
+	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
+	font-weight: 	bold;
+	color: 			#BA55D3;
+	text-align:		center;
+}
+
+
 .logo{
-	display: block;
-	margin-left: 32%;
-	width: 100vw;
-    	height: 100vh;
+	display: 		block;
+	margin: 		auto;
+	width:			50%;
+
 }
 
 .button1{
-	font-size: 25px;
-	font-family: "Comic Sans MS", "Comic Sans", cursive;
-	font-weight: bold;
-	color: #DD33FF;
-	background-color: #FFFACD;
-	border-radius: 12px;
-	border: 3px solid #DD33FF;
-	margin-left: 75%;
+	font-size: 			25px;
+	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
+	font-weight: 		bold;
+	color: 				#DD33FF;
+	background-color: 	#FFFACD;
+	border-radius: 		12px;
+	border: 			3px solid #DD33FF;
+	left:				45%;
+	cursor:				pointer;
 }
 
 .inputxt{
-	font-size: 30px;
-	font-family: "Comic Sans MS", "Comic Sans", cursive;
-	color: #DD33FF;
-	font-weight: bold;	
+	font-size: 			30px;
+	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
+	color: 				#DD33FF;
+	font-weight: 		bold;	
+	width:				50%;
 }
 
 .inbox{
 	font-size: 100%;
 }
 
-#start{
-	position: absolute;
-	color: black;
-	top:45%;
-	left:  35%;
-}
+
 .button2{
-	font-size: 30px;
+	font-size: 		30px;
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-weight: bold;
 	color: #BA55D3;
@@ -82,28 +88,33 @@ body {
 	background-color: #FFFACD;
 	border-radius: 12px;
 	border: 3px solid #BA55D3;
-	margin-left: 40%;
+	text-align: center;
 	cursor:pointer;
 }
 
-.container{
-	padding: 20px;
-	width: 100vw;
-   	height: 100vh;
+#main{
+	
+	width: 90%;
+    margin: 0 auto;
+	text-align: center;
 }
 
-#reach{
-	width: 40%;
-   	float: left;
-    	padding: 80px;
 
+#reach{
+	top-margin:	30%;
+	float:  left;
+	vertical-align: top;
+	height: 	400px;
+	overflow: hidden;
+	
 }
 
 #data{
-	width: 40%;
-    float: left;
-    padding: 85px;
-	height: 300px;
+	width: 		40%;
+    float:	left;
+	vertical-align: top;
+	height: 	400px;
+	overflow: hidden;
 }
 
 .innerxt{
