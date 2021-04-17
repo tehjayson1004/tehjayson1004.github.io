@@ -157,15 +157,9 @@
 	}
 	
 	function reachFunction(){	
-		console.log("reachhh");
-    		navigator.geolocation.getCurrentPosition(showReach);
-	}
-	  
-	function showReach(positionr) {		
 		console.log("inside");
-		rchlong = positionr.coords.longitude;
-		rchlat = positionr.coords.latitude;
-		gps = new Paho.MQTT.Message(driver_id + "," + rchlong + "," + rchlat);
+	
+		gps = new Paho.MQTT.Message(driver_id + "," + location[0] + "," + location[1]);
   		gps.destinationName = "REACH" + driver_id;
   		client.send(gps);
  		alert("ALERT SENT TO CONTROL CENTER");
