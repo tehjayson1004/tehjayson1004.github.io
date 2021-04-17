@@ -159,7 +159,7 @@
 	function reachFunction(){	
 		console.log("inside");
 	
-		gps = new Paho.MQTT.Message(driver_id + "," + location[0] + "," + location[1]);
+		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
   		gps.destinationName = "REACH" + driver_id;
   		client.send(gps);
  		alert("ALERT SENT TO CONTROL CENTER");
