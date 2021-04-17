@@ -156,25 +156,22 @@
 		document.getElementById("start").style.display = "none";
 	}
 	
-	function reachFunction(){
-		if (navigator.geolocation) {
+	function reachFunction(){	
 		console.log("reachhh");
-    			navigator.geolocation.watchPosition(showReach);
-  		} else {
-   			reach.innerHTML = "Geolocation is not supported by this browser.";
-  		}
-		
-		function showReach(position) {		
-			console.log("inside");
-			rchlong = position.coords.longitude;
-			rchlat = position.coords.latitude;
-			gps = new Paho.MQTT.Message(driver_id + "," + rchlong + "," + rchlat);
-  			gps.destinationName = "REACH" + driver_id;
-  			client.send(gps);
- 			alert("ALERT SENT TO CONTROL CENTER");
-		}
+    		navigator.geolocation.watchPosition(showReach);
+	}
+	  
+	function showReach(position) {		
+		console.log("inside");
+		rchlong = position.coords.longitude;
+		rchlat = position.coords.latitude;
+		gps = new Paho.MQTT.Message(driver_id + "," + rchlong + "," + rchlat);
+  		gps.destinationName = "REACH" + driver_id;
+  		client.send(gps);
+ 		alert("ALERT SENT TO CONTROL CENTER");
+	}
 	
-	}	
+		
 	
 	
 	function endWork() {
