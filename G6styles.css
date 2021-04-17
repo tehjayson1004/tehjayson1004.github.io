@@ -1,5 +1,7 @@
 body {
 	background-color: #FFFACD;
+	width: 100vw;
+    	height: 100vh;
 }
 
 #pass {
@@ -28,9 +30,8 @@ body {
 .logo{
 	display: block;
 	margin-left: 32%;
-	width: 50%;
-	max-width: 100%;
-	height: auto;
+	width: 100vw;
+    	height: 100vh;
 }
 
 .button1{
@@ -87,14 +88,15 @@ body {
 
 .container{
 	padding: 20px;
+	width: 100vw;
+   	height: 100vh;
 }
 
 #reach{
 	width: 40%;
-    float: left;
-    padding: 80px;
-	height: 300px;
-	
+   	float: left;
+    	padding: 80px;
+
 }
 
 #data{
