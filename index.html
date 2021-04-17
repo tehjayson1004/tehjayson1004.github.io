@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Extract Sensor</title>
+  <link rel="stylesheet" href="G6styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
   <script src="fader.js"></script>
   <script type="text/javascript">
@@ -110,13 +111,13 @@
 			prev_time = new Date();
 			prev_time = prev_time.getTime();
 			z = document.getElementById("test5");
-			z.innerHTML = "Speed: " + speed;
+			z.innerHTML = "SPEED: " + speed;
 		}
 		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
 		gps_message.destinationName = "gps" + driver_id;
 		client.send(gps_message);
 		x = document.getElementById("test");
-		x.innerHTML = position.coords.latitude + ',' + position.coords.longitude;
+		x.innerHTML = "GPS:" + position.coords.latitude + ',' + position.coords.longitude;
 		}
 	
 
@@ -124,7 +125,7 @@
 		pw = document.getElementById("pw");
 		console.log(pw.value)
 		switch (pw.value) {
-			case "tehjayson":
+			case "asd":
 				driver_id = 1;
 				corr = 1;
 				break;
@@ -140,18 +141,18 @@
 		if (corr  ==1){
 			document.getElementById("start").style.display = "block";
 			document.getElementById("pass").style.display = "none";
+			document.getElementById("status").innerHTML= "STATUS: ONLINE";
 		}
 		}
 	
 	function startWork() {
-		
+			
 		strt = new Paho.MQTT.Message("true");
   		strt.destinationName = "STARTWORKLO" + driver_id;
   		client.send(strt);
-		start.innerHTML = "WORK STARTED" ;
+		//start.innerHTML = "" ;
 		alert("WELCOME BACK TO WORK");
-		document.getElementById("reach").style.display = "block";
-		document.getElementById("ebye").style.display = "block";
+		document.getElementById("main").style.display = "block";
 		document.getElementById("start").style.display = "none";
 	}
 	
@@ -178,8 +179,9 @@
 		end = new Paho.MQTT.Message("true");
   		end.destinationName = "ENDWORKLO" + driver_id;
   		client.send(end);
-		ebye.innerHTML = "SEE YOU TOMORROW";
-		document.getElementById("reach").style.display = "none";
+		last.innerHTML = "SEE YOU TOMORROW";
+		document.getElementById("last").style.display = "block";
+		document.getElementById("main").style.display = "none";
 	}
 	  
 		
@@ -195,43 +197,53 @@
 	
 	
   </script>
+  
+
+  
 </head>
 <body>
-	<h1>FleetHub</h1>
+	<div class="logo">	<a href="https://ibb.co/4VFM68v"><img src="https://i.ibb.co/kSG0R4b/fleethub-removebg.png" alt="fleethub-removebg" border="0"></a>
+ </div>
+
 	<div id = "pass">
-	<form id="frm1" action="/action_page.php">
-	  Password: <input id="pw" type="password" name="password"><br>
-	  <input type="button" value="Enter" onclick="getDriverId()"></input>
-	</form> 
+		<p class= "inpass"> USER LOGIN </p>
+		<form id="frm1" action="/action_page.php" class="inputxt">
+			PASSWORD: <input id="pw" type="password" name="password" class="inbox"><br>
+			</br>
+		<input type="button" value="Enter" onclick="getDriverId()" class="button1"></input>
+		</form> 
 	</div>
 	
 	<div id = "start"  style="display : none">
-		<p>CLICK HERE TO START WORK</p>
-		<button onclick="startWork()">START WORK</button>
+		<p class="inpass">CLICK HERE TO START WORK</p>
+		<button onclick="startWork()" class= "button2">START WORK</button>
 	</div>
 	
-	<div id="reach"  style="display : none"><p> CLICK HERE WHEN ARRIVE </p>
-		<button onclick="reachFunction()" style="margin:5px;">REACH</button>
-		<button onclick="showData()" style="margin:5px;">SHOW DATA</button>
-	</div> 
-	
-	<div id="ebye"  style="display : none">
-		<p> CLICK HERE END WORK </p>
-		<button onclick="endWork()">OFFLINE</button>
-	</div> 
+	<div id = "main" style="display : none">
+		<div id="reach">
+			<p class="twopass"> CLICK HERE WHEN ARRIVE </p>
+			<button onclick="reachFunction()"  class= "button3">REACH <br></button>
+			<button onclick="showData()"  class= "button3">SHOW DATA</button>
+			<p class="twopass"> CLICK HERE END WORK </p>
+			<button onclick="endWork()" class= "button3">OFFLINE</button>
+		</div> 
+			
 		
-	<div id="data" style="display : none">
-		<div id="test">Loading GPS...</div>
-		<div id="test5">Speed...</div>
-		<div id="submsg">Loading Next Location...</div>
+		<div id="data" style="display : none">
+			<div id="status" class="innerxt"><br>Loading Status....</div>
+			<div id="test" class="innerxt">Loading GPS...</div>
+			<div id="test5" class="innerxt">Speed...</div>
+			<div id="submsg" class="innerxt">Loading Next Location...</div>
+		</div>
 	</div>
-
+	
+	<div id = "last" style="display : none" class="inpass">" "</div>
 	
 	
 	<script>
 		//init();
 		initGeolocation();
-		// success version on 16/4/2021 
+		// success version on 17/4/2021 
 	</script>
 </body>
 </html>
