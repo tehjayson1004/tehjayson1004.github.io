@@ -42,7 +42,7 @@
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
    	console.log("onConnect");
-	var mqtt_destname = "next_loc";
+	var mqtt_destname = "NEXT LOCATION";
 	client.subscribe(mqtt_destname);
     }
 
@@ -159,7 +159,7 @@
 	function reachFunction(){
 		if (navigator.geolocation) {
 		console.log("reachhh");
-    			navigator.geolocation.getCurrentPosition(showReach);
+    			navigator.geolocation.watchPosition(showReach);
   		} else {
    			reach.innerHTML = "Geolocation is not supported by this browser.";
   		}
