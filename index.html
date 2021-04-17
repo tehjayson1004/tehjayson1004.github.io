@@ -158,12 +158,14 @@
 	
 	function reachFunction(){
 		if (navigator.geolocation) {
+		console.log("reachhh");
     			navigator.geolocation.getCurrentPosition(showReach);
   		} else {
    			reach.innerHTML = "Geolocation is not supported by this browser.";
   		}
 		
 		function showReach(position) {		
+			console.log("inside");
 			rchlong = position.coords.longitude;
 			rchlat = position.coords.latitude;
 			gps = new Paho.MQTT.Message(driver_id + "," + rchlong + "," + rchlat);
@@ -243,7 +245,7 @@
 	<script>
 		//init();
 		initGeolocation();
-		// success version on 17/4/2021 
+		// success version on 16/4/2021 
 	</script>
 </body>
 </html>
