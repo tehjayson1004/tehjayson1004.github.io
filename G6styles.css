@@ -1,0 +1,112 @@
+body {
+	background-color: #FFFACD;
+}
+
+#pass {
+	position: absolute;
+	color: black;
+	top:45%;
+	left:  35%;
+}	
+
+.inpass{
+	font-size: 200%;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-weight: bold;
+	color: #A020F0;
+	text-align: center;
+}
+
+.twopass{
+	font-size: 200%;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-weight: bold;
+	color: #BA55D3;
+	text-align: center;
+}
+
+.logo{
+	display: block;
+	margin-left: 32%;
+	width: 50%;
+	max-width: 100%;
+	height: auto;
+}
+
+.button1{
+	font-size: 25px;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-weight: bold;
+	color: #DD33FF;
+	background-color: #FFFACD;
+	border-radius: 12px;
+	border: 3px solid #DD33FF;
+	margin-left: 75%;
+}
+
+.inputxt{
+	font-size: 30px;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	color: #DD33FF;
+	font-weight: bold;	
+}
+
+.inbox{
+	font-size: 100%;
+}
+
+#start{
+	position: absolute;
+	color: black;
+	top:45%;
+	left:  35%;
+}
+.button2{
+	font-size: 30px;
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-weight: bold;
+	color: #BA55D3;
+	width: 50%;
+	background-color: #FFFACD;
+	border-radius: 12px;
+	border: 3px solid #BA55D3;
+	margin-left: 25%;
+	cursor:pointer;
+}
+
+.button3{
+	font-size: 20px;
+	font-weight: bold;
+	color: #BA55D3;
+	background-color: #FFFACD;
+	border-radius: 12px;
+	border: 3px solid #BA55D3;
+	margin-left: 40%;
+	cursor:pointer;
+}
+
+.container{
+	padding: 20px;
+}
+
+#reach{
+	width: 40%;
+    float: left;
+    padding: 80px;
+	height: 300px;
+	
+}
+
+#data{
+	width: 40%;
+    float: left;
+    padding: 85px;
+	height: 300px;
+}
+
+.innerxt{
+	font-size: 25px;
+	font-style: italic;
+	color:  #BA55D3;
+	line-height:2.5;
+}
