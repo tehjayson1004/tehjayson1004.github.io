@@ -42,7 +42,7 @@
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
    	console.log("onConnect");
-	var mqtt_destname = "NEXT LOCATION";
+	var mqtt_destname = "next_loc";
 	client.subscribe(mqtt_destname);
     }
 
@@ -156,16 +156,15 @@
 		document.getElementById("start").style.display = "none";
 	}
 	
-	function reachFunction(){	
-		console.log("inside");
+	function reachFunction(){
 	
+		console.log("inside");
 		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
   		gps.destinationName = "REACH" + driver_id;
   		client.send(gps);
  		alert("ALERT SENT TO CONTROL CENTER");
-	}
+		}
 	
-		
 	
 	
 	function endWork() {
@@ -203,21 +202,21 @@
 		<form id="frm1" action="/action_page.php" class="inputxt">
 			PASSWORD: <input id="pw" type="password" name="password" class="inbox"><br>
 			</br>
-		<input type="button" value="Enter" onclick="getDriverId()" class="button1"></input>
+		<input type="button" value="ENTER" onclick="getDriverId()" class="button1"></input>
 		</form> 
 	</div>
 	
 	<div id = "start"  style="display : none">
-		<p class="inpass">CLICK HERE TO START WORK</p>
+		<p class="stxt">CLICK THE BUTTON TO START WORK</p>
 		<button onclick="startWork()" class= "button2">START WORK</button>
 	</div>
 	
 	<div id = "main" style="display : none">
 		<div id="reach">
-			<p class="twopass"> CLICK HERE WHEN ARRIVE </p>
-			<button onclick="reachFunction()"  class= "button3">REACH <br></button>
 			<button onclick="showData()"  class= "button3">SHOW DATA</button>
-			<p class="twopass"> CLICK HERE END WORK </p>
+			<p class="twopass"> CLICK TO CONFIRM DELIVERY </p>
+			<button onclick="reachFunction()"  class= "button3">REACH</button>
+			<p class="twopass"> CLICK TO END WORK </p>
 			<button onclick="endWork()" class= "button3">OFFLINE</button>
 		</div> 
 			
@@ -230,7 +229,7 @@
 		</div>
 	</div>
 	
-	<div id = "last" style="display : none" class="inpass">" "</div>
+	<div id = "last" style="display : none" class="stxt">" "</div>
 	
 	
 	<script>
