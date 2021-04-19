@@ -42,7 +42,7 @@
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
    	console.log("onConnect");
-	var mqtt_destname = "next_loc";
+	var mqtt_destname = "NEXT LOCATION";
 	client.subscribe(mqtt_destname);
     }
 
@@ -214,9 +214,9 @@
 	<div id = "main" style="display : none">
 		<div id="reach">
 			<button onclick="showData()"  class= "button3">SHOW DATA</button>
-			<p class="twopass"> CLICK TO CONFIRM DELIVERY </p>
+	
 			<button onclick="reachFunction()"  class= "button3">REACH</button>
-			<p class="twopass"> CLICK TO END WORK </p>
+
 			<button onclick="endWork()" class= "button3">OFFLINE</button>
 		</div> 
 			
