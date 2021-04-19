@@ -95,26 +95,24 @@ body {
 #main{
 	
 	width: 90%;
-    margin: 0 auto;
+    	margin: 0 auto;
 	text-align: center;
 }
 
 
 #reach{
-	top-margin:	30%;
-	float:  left;
+	top-margin:	100%;
 	vertical-align: top;
 	height: 	400px;
-	overflow: hidden;
+	overflow: 	hidden;
 	
 }
 
 #data{
-	width: 		40%;
-    float:	left;
+	width: 		100%;
 	vertical-align: top;
 	height: 	400px;
-	overflow: hidden;
+	overflow: 	hidden;
 }
 
 .innerxt{
