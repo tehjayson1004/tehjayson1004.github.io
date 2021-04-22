@@ -85,7 +85,7 @@
 		console.log(pw.value)
 		switch (pw.value) {
 			case "asd":
-				driver_id = 0;
+				driver_id = 1;
 				corr = 1;
 				break;
 			case "tanweiyang":
@@ -118,7 +118,7 @@
 	function reachFunction(){
 	
 		console.log("inside");
-		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
+		gps = new Paho.MQTT.Message(driver_id-1 + "," + location_array[0] + "," + location_array[1]);
   		gps.destinationName = "REACH" + driver_id;
   		client.send(gps);
  		alert("ALERT SENT TO CONTROL CENTER");
