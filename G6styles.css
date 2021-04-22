@@ -5,10 +5,7 @@ body {
 }
 
 #pass {
-	position: 	absolute;
-	color: 		black;
-	top:  		45%;
-	left:  		45%;
+	text-align:		center;
 }	
 
 .inpass{
