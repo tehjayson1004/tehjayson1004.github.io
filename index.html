@@ -34,10 +34,8 @@
     onSuccess:onConnect,
     onFailure:doFail
     }
-
     // connect the client
     client.connect(options);
-
     // called when the client connects
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
@@ -45,18 +43,15 @@
 	var mqtt_destname = "NEXT LOCATION";
 	client.subscribe(mqtt_destname);
     }
-
     function doFail(e){
     console.log(e);
     }
-
     // called when the client loses its connection
     function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
       console.log("onConnectionLost:"+responseObject.errorMessage);
       }
     }
-
     // called when a message arrives
     function onMessageArrived(message) {
     	console.log("onMessageArrived:"+message.payloadString);
@@ -78,7 +73,6 @@
 	function successCallback(position) {
 		location_array[0] = position.coords.latitude;
 		location_array[1] = position.coords.longitude;
-		
 		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
 		gps_message.destinationName = "gps" + driver_id;
 		client.send(gps_message);
@@ -86,7 +80,6 @@
 		x.innerHTML = "GPS:" + position.coords.latitude + ',' + position.coords.longitude;
 		}
 	
-
 	function getDriverId() {
 		pw = document.getElementById("pw");
 		console.log(pw.value)
@@ -156,18 +149,17 @@
 	
   </script>
   
-
   
 </head>
 <body>
-	<div class="logo">
-		<img src="https://i.ibb.co/kSG0R4b/fleethub-removebg.png" alt="fleethub-removebg" border="0"class="cute"></img>
-	</div>
-
+	<div class="logo">	
+		<img src="https://i.ibb.co/kSG0R4b/fleethub-removebg.png" alt="fleethub-removebg" border="0"></img>
+ 	</div>
+	
 	<div id = "pass">
 		<p class= "inpass"> USER LOGIN </p>
 		<form id="frm1" action="/action_page.php" class="inputxt">
-			PASSWORD: <input id="pw" type="password" name="password" ><br>
+			PASSWORD: <input id="pw" type="password" name="password" class="inbox"><br>
 			</br>
 		<input type="button" value="ENTER" onclick="getDriverId()" class="button1"></input>
 		</form> 
@@ -181,9 +173,7 @@
 	<div id = "main" style="display : none">
 		<div id="reach">
 			<button onclick="showData()"  class= "button3">SHOW DATA</button>
-	
 			<button onclick="reachFunction()"  class= "button3">REACH</button>
-
 			<button onclick="endWork()" class= "button3">OFFLINE</button>
 		</div> 
 			
