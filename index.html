@@ -80,6 +80,26 @@
 		x.innerHTML = "GPS:" + position.coords.latitude + ',' + position.coords.longitude;
 		}
 	
+	if(window.DeviceMotionEvent){
+	  window.addEventListener("devicemotion", handleMotion, true);
+	}else{
+	  console.log("DeviceMotionEvent is not supported");
+	}
+	  
+	function handleMotion(acl){
+		//acl.start();
+		console.log(acl);
+		var now = new Date();
+		var end_time = now.getTime();
+		var dt_acc = end_time - acc_start;
+		//demo2.innerHTML = "Accelerometer not activated.";
+		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z + "," + dt_acc);
+		acc_start = end_time;
+		acc_message.destinationName = "acc" + driver_id;
+		client.send(acc_message);
+		console.log("Acceleration Published");
+	}
+	  
 	function getDriverId() {
 		pw = document.getElementById("pw");
 		console.log(pw.value)
