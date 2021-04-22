@@ -5,7 +5,9 @@ body {
 }
 
 #pass {
-	text-align:		center;
+	width:	40%;
+	margin:auto;
+	text-align:center;
 }	
 
 .inpass{
@@ -37,21 +39,24 @@ body {
 	display: 		block;
 	margin: 		auto;
 	width:			50%;
-	border: 		solid;
 	text-align:		center;
+}
+
+.cute{
+	width:		100%;
 }
 
 
 .button1{
-	font-size: 			25px;
+	font-size: 			30px;
 	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
 	font-weight: 		bold;
 	color: 				#DD33FF;
 	background-color: 	#FFFACD;
-	border-radius: 		12px;
+	border-radius: 		15px;
 	border: 			3px solid #DD33FF;
-	left:				45%;
 	cursor:				pointer;
+	text-align:			center;
 }
 
 .inputxt{
@@ -59,11 +64,12 @@ body {
 	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
 	color: 				#DD33FF;
 	font-weight: 		bold;	
-	width:				50%;
+	text-align: center;
 }
 
 .inbox{
 	font-size: 100%;
+	text-align:center;
 }
 
 
@@ -72,12 +78,11 @@ body {
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-weight: bold;
 	color: #BA55D3;
-	width: 50%;
 	background-color: #FFFACD;
 	border-radius: 12px;
 	border: 3px solid #BA55D3;
-	margin-left: 25%;
 	cursor:pointer;
+	text-align:	center;
 }
 
 .button3{
@@ -93,21 +98,26 @@ body {
 
 #main{
 	
-	width: 90%;
-    	margin: 0 auto;
+	width: 50%;
 	text-align: center;
 }
 
 
 #reach{
+	top-margin:	30%;
+	float:  left;
 	vertical-align: top;
-	overflow: 	hidden;
+	height: 	400px;
+	overflow: hidden;
+	
 }
 
 #data{
-	width: 		100%;
+	width: 		40%;
+    float:	left;
 	vertical-align: top;
-	overflow: 	hidden;
+	height: 	400px;
+	overflow: hidden;
 }
 
 .innerxt{
