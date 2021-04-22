@@ -8,7 +8,11 @@ body {
 	width:	40%;
 	margin:auto;
 	text-align:center;
-}	
+}
+
+#start{
+	text-align:center;
+}
 
 .inpass{
 	font-size: 		200%;
