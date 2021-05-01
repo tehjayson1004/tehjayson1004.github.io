@@ -126,7 +126,6 @@
 		}
 	
 	function startWork() {
-			
 		strt = new Paho.MQTT.Message(driver_id);
   		strt.destinationName = "STARTWORKLO" + driver_id;
   		client.send(strt);
@@ -148,7 +147,7 @@
 	
 	
 	function endWork() {
-		end = new Paho.MQTT.Message(bypass+1 + ","  + driver_id-1 + "," + location_array[0] + "," + location_array[1]);
+		end = new Paho.MQTT.Message(driver_id+1 + "," + location_array[0] + "," + location_array[1]);
 		end.destinationName = "ENDWORKLO" + driver_id;
   		client.send(end);
 		last.innerHTML = "SEE YOU TOMORROW";
