@@ -20,7 +20,7 @@
 	console.log(window.navigator);
 	var location_array = [0,0];
 	var speed = 0;
-	var bypass = 1;
+	var end = 1;
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -152,7 +152,7 @@
 	
 	
 	function endWork() {
-		end = new Paho.MQTT.Message(100 + driver_id-1 + "," + location_array[0] + "," + location_array[1]);
+		end = new Paho.MQTT.Message(end + "," + driver_id-1 + "," + location_array[0] + "," + location_array[1]);
 		end.destinationName = "ENDWORKLO" + driver_id;
   		client.send(end);
 		last.innerHTML = "SEE YOU TOMORROW";
