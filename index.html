@@ -126,8 +126,13 @@
 		}
 	
 	function startWork() {
-		strt = new Paho.MQTT.Message(driver_id);
-  		strt.destinationName = "STARTWORKLO" + driver_id;
+		if (driver_id == 1) {
+			strt = new Paho.MQTT.Message("1");
+		}
+		else {
+			strt = new Paho.MQTT.Message("0");
+		}
+		strt.destinationName = "STARTWORKLO" + driver_id;
   		client.send(strt);
 		//start.innerHTML = "" ;
 		alert("WELCOME BACK TO WORK");
