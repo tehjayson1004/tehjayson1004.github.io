@@ -40,12 +40,9 @@
     client.connect(options);
     // called when the client connects
     function onConnect() {
-    // Once a connection has been made, make a subscription and send a message.
-   	console.log("onConnect");
-	var mqtt_destname = "NEXTLOCATION_" + driver_id;
-	client.subscribe(mqtt_destname);
-	//var driver0_del = "DELIVERED_0" ;
-	//client.subsribe(driver0_del);
+		console.log("onConnect");
+		var mqtt_destname = "NEXTLOCATION_0";
+		client.subscribe(mqtt_destname);
     }
     function doFail(e){
     console.log(e);
@@ -58,17 +55,11 @@
     }
     // called when a message arrives
     function onMessageArrived(message) {
-    	console.log("onMessageArrived:"+message.payloadString);
-	if (message.destinatonName == "NEXTLOCATION_0") {
-		var result = message.destinationName + " : " + message.payloadString + "";
-		document.getElementById("submsg").innerHTML = result;
-	}
-	else if (message.destinationName == "DELIVERED_0"){
-		var total_del = message.payloadString; 
-		if (total_del == "3"){
-			document.getElementById("reachbtn").disabled;
+		if (message.destinationName == "NEXTLOCATION_0") {
+			console.log("arrivehere");
+			var result = "NEXT LOCATION : " + message.payloadString + "";
+			document.getElementById("submsg").innerHTML = result;
 		}
-	}
     }
 	  
 	function initGeolocation() {
@@ -149,10 +140,13 @@
 	}
 	
 	function reachFunction(){
+		
 		del_count = del_count + 1;
-		del_msg = new Paho.MQTT.Message(del_count);
-		del_msg.destinationName = "DELIVERED_" + driver_id ;
-		client.send(del_msg);
+		console.log(del_count);
+		if (del_count == 3){
+			//document.getElementById("reachbtn").disabled  = true;
+		}
+		
 		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
   		gps.destinationName = "REACH_" + driver_id;
   		client.send(gps);
@@ -205,7 +199,7 @@
 	<div id = "main" style="display : none">
 		<div id="reach">
 			<button onclick="showData()"  class= "button3">SHOW DATA</button>
-			<button onclick="reachFunction()"  class= "button3" id="reachbtn">REACH</button>
+			<button onclick="reachFunction()"  class= "button3" id="reachBtn">REACH</button>
 			<button onclick="endWork()" class= "button3">OFFLINE</button>
 		</div> 
 			
