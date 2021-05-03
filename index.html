@@ -131,7 +131,7 @@
 	}
 	
 	function startWork() {
-		strt = new Paho.MQTT.Message(driver_id);
+		strt = new Paho.MQTT.Message("1");
 		strt.destinationName = "STARTWORK_" + driver_id;
   		client.send(strt);
 		alert("WELCOME BACK TO WORK");
