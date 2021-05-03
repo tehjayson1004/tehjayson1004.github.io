@@ -21,6 +21,7 @@
 	var location_array = [0,0];
 	var speed = 0;
 	var end  = 1 ;
+	var del_count = 0; 
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -43,6 +44,8 @@
    	console.log("onConnect");
 	var mqtt_destname = "NEXTLOCATION_" + driver_id;
 	client.subscribe(mqtt_destname);
+	var driver0_del = "DELIVERED_0" ;
+	client.subsribe(driver0_del);
     }
     function doFail(e){
     console.log(e);
@@ -56,8 +59,16 @@
     // called when a message arrives
     function onMessageArrived(message) {
     	console.log("onMessageArrived:"+message.payloadString);
-	var result = message.destinationName + " : " + message.payloadString + "";
-	document.getElementById("submsg").innerHTML = result;
+	if (message.destinatonName == "NEXTLOCATION_0") {
+		var result = message.destinationName + " : " + message.payloadString + "";
+		document.getElementById("submsg").innerHTML = result;
+	}
+	else if (message.destinationName == "DELIVERED_0"){
+		var total_del = message.payloadString; 
+		if (total_del == "3"){
+			document.getElementById("reachbtn").disabled;
+		}
+	}
     }
 	  
 	function initGeolocation() {
@@ -137,14 +148,16 @@
 		document.getElementById("start").style.display = "none";
 	}
 	
-	function reachFunction(){	
+	function reachFunction(){
+		del_count = del_count + 1;
+		del_msg = new Paho.MQTT.Message(del_count);
+		del_msg.destinationName = "DELIVERED_" + driver_id ;
+		client.send(del_msg);
 		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
   		gps.destinationName = "REACH_" + driver_id;
   		client.send(gps);
  		alert("ALERT SENT TO CONTROL CENTER");	
 	}
-	
-	
 	
 	function endWork() {	
 		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
@@ -154,8 +167,7 @@
 		document.getElementById("last").style.display = "block";
 		document.getElementById("main").style.display = "none";
 	}
-	  
-		
+	  		
 	function showData() {
 		d = document.getElementById("data");
 		if (d.style.display == "none"){
@@ -193,7 +205,7 @@
 	<div id = "main" style="display : none">
 		<div id="reach">
 			<button onclick="showData()"  class= "button3">SHOW DATA</button>
-			<button onclick="reachFunction()"  class= "button3">REACH</button>
+			<button onclick="reachFunction()"  class= "button3" id="reachbtn">REACH</button>
 			<button onclick="endWork()" class= "button3">OFFLINE</button>
 		</div> 
 			
