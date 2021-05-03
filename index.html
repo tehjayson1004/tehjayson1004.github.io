@@ -20,7 +20,7 @@
 	console.log(window.navigator);
 	var location_array = [0,0];
 	var speed = 0;
-	var end ;
+	var end  = 1 ;
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -41,7 +41,7 @@
     function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
    	console.log("onConnect");
-	var mqtt_destname = "NEXT LOCATION";
+	var mqtt_destname = "NEXTLOCATION_" + driver_id;
 	client.subscribe(mqtt_destname);
     }
     function doFail(e){
@@ -75,7 +75,7 @@
 		location_array[0] = position.coords.latitude;
 		location_array[1] = position.coords.longitude;
 		gps_message = new Paho.MQTT.Message(location_array[0] + "," + location_array[1]);
-		gps_message.destinationName = "gps" + driver_id;
+		gps_message.destinationName = "GPS_" + driver_id;
 		client.send(gps_message);
 		x = document.getElementById("test");
 		x.innerHTML = "GPS:" + position.coords.latitude + ',' + position.coords.longitude;
@@ -96,66 +96,59 @@
 		//demo2.innerHTML = "Accelerometer not activated.";
 		acc_message = new Paho.MQTT.Message(acl.acceleration.x + "," + acl.acceleration.y + "," + acl.acceleration.z + "," + dt_acc);
 		acc_start = end_time;
-		acc_message.destinationName = "acc" + driver_id;
+		acc_message.destinationName = "ACC_" + driver_id;
 		client.send(acc_message);
 		console.log("Acceleration Published");
 	}
 	  
 	function getDriverId() {
 		pw = document.getElementById("pw");
-		console.log(pw.value)
 		switch (pw.value) {
 			case "asd":
-				driver_id = 1;
+				driver_id = 0;
 				corr = 1;
-				end = 1; 
 				break;
 			case "tanweiyang":
+				driver_id = 1;	
+				corr = 1;
+				break;
+			case "chuah":
 				driver_id = 2;
-				corr  =1;
+				corr = 1;
 				break;
 			default:
 				driver_id = -1;
 				alert("WRONG PASSWORD");
 		}
-		console.log(driver_id);
-		if (corr  ==1){
+	
+		if (corr ==1){
 			document.getElementById("start").style.display = "block";
 			document.getElementById("pass").style.display = "none";
 			document.getElementById("status").innerHTML= "STATUS: ONLINE";
 		}
-		}
+	}
 	
 	function startWork() {
-		if (driver_id == 1) {
-			strt = new Paho.MQTT.Message("1");
-		}
-		else {
-			strt = new Paho.MQTT.Message("0");
-		}
-		strt.destinationName = "STARTWORKLO" + driver_id;
+		strt = new Paho.MQTT.Message("1");
+		strt.destinationName = "STARTWORK_" + driver_id;
   		client.send(strt);
-		//start.innerHTML = "" ;
 		alert("WELCOME BACK TO WORK");
 		document.getElementById("main").style.display = "block";
 		document.getElementById("start").style.display = "none";
 	}
 	
-	function reachFunction(){
-	
-		console.log("inside");
-		gps = new Paho.MQTT.Message(driver_id-1 + "," + location_array[0] + "," + location_array[1]);
-  		gps.destinationName = "REACH" + driver_id;
+	function reachFunction(){	
+		gps = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1]);
+  		gps.destinationName = "REACH_" + driver_id;
   		client.send(gps);
- 		alert("ALERT SENT TO CONTROL CENTER");
-		}
+ 		alert("ALERT SENT TO CONTROL CENTER");	
+	}
 	
 	
 	
-	function endWork() {
-		var d_id = driver_id - 1;
-		endmsg = new Paho.MQTT.Message(d_id + "," + location_array[0] + "," + location_array[1] + "," + end);
-		endmsg.destinationName = "ENDWORKLO" + driver_id;
+	function endWork() {	
+		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
+		endmsg.destinationName = "ENDWORK_" + driver_id;
   		client.send(endmsg);
 		last.innerHTML = "SEE YOU TOMORROW";
 		document.getElementById("last").style.display = "block";
