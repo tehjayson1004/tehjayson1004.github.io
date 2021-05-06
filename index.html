@@ -22,6 +22,7 @@
 	var speed = 0;
 	var end  = 1 ;
 	var del_count = 0; 
+	var mqtt_destname;
 	// Create a client instance
     var client = new Paho.MQTT.Client(host, port,"client_id");
     //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
@@ -42,19 +43,19 @@
     function onConnect() {
 		console.log("onConnect");
 	    
-	    	/*if (driver_id == 0){
-			var mqtt_destname = "NEXTLOCATION_0";
+	    	if (driver_id == 0){
+			mqtt_destname = "NEXTLOCATION_0";
 		}	
 	    	else if (driver_id == 1){
-			var mqtt_destname = "NEXTLOCATION_1";
+			mqtt_destname = "NEXTLOCATION_1";
 		}
 	    	else if (driver_id == 2){
-			var mqtt_destname = "NEXTLOCATION_2";
+			mqtt_destname = "NEXTLOCATION_2";
 		}
 		else {
-			var mqtt_destname = "NEXTLOCATION_-1";
-		}*/
-		var mqtt_destname = "NEXTLOCATION_1";	
+			mqtt_destname = "NEXTLOCATION_-1";
+		}
+		//var mqtt_destname = "NEXTLOCATION_1";	
 	    	console.log(mqtt_destname);
 		client.subscribe(mqtt_destname);
     }
