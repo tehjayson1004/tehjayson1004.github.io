@@ -41,7 +41,8 @@
     // called when the client connects
     function onConnect() {
 		console.log("onConnect");
-		var mqtt_destname = "NEXTLOCATION_0";
+		var mqtt_destname = "NEXTLOCATION_" + driver_id;
+	    	console.log(mqtt_destname);
 		client.subscribe(mqtt_destname);
     }
     function doFail(e){
