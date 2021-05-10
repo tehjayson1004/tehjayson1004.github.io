@@ -70,8 +70,15 @@
     }
     // called when a message arrives
     function onMessageArrived(message) {
-		if (message.destinationName == "NEXTLOCATION_0") {
-			console.log("arrivehere");
+		if (message.destinationName === "NEXTLOCATION_0") {
+			var result = "NEXT LOCATION : " + message.payloadString + "";
+			document.getElementById("submsg").innerHTML = result;
+		}
+		if (message.destinationName === "NEXTLOCATION_1") {
+			var result = "NEXT LOCATION : " + message.payloadString + "";
+			document.getElementById("submsg").innerHTML = result;
+		}
+		if (message.destinationName === "NEXTLOCATION_2") {
 			var result = "NEXT LOCATION : " + message.payloadString + "";
 			document.getElementById("submsg").innerHTML = result;
 		}
@@ -137,12 +144,15 @@
 				driver_id = -1;
 				alert("WRONG PASSWORD");
 		}
-	
+		
 		if (corr ==1){
 			document.getElementById("start").style.display = "block";
 			document.getElementById("pass").style.display = "none";
 			document.getElementById("status").innerHTML= "STATUS: ONLINE";
 		}
+		
+		onConnect();
+		console.log("suc");
 	}
 	
 	function startWork() {
