@@ -178,7 +178,12 @@
 		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
 		endmsg.destinationName = "ENDWORK_" + driver_id;
   		client.send(endmsg);
-		last.innerHTML = "SEE YOU TOMORROW";
+		let speed = 1;
+		let distance = 4;
+		let time = 5;
+		let eff = 2;
+		let aptitude = 3;
+		last.innerHTML = "SEE YOU TOMORROW" + <br> + "Speed: " + speed + <br> + "Distance: " + distance + "Time: " + time + "Efficiency: " + eff + "Aptitude: " + aptitude;
 		document.getElementById("last").style.display = "block";
 		document.getElementById("main").style.display = "none";
 	}
