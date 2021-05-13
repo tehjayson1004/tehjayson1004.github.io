@@ -111,12 +111,38 @@ body {
 }
 
 
-#reach{
+#reach1{
 
 	margin: 0;
   	position: absolute;
-  	top: 80%;
+  	top: 60%;
+  	left: 20%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+	overflow: hidden;
+	
+}
+
+
+#reach2{
+
+	margin: 0;
+  	position: absolute;
+  	top: 60%;
   	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+	overflow: hidden;
+	
+}
+
+
+#reach3{
+
+	margin: 0;
+  	position: absolute;
+  	top: 60%;
+  	left: 80%;
   	-ms-transform: translate(-50%, -50%);
   	transform: translate(-50%, -50%);
 	overflow: hidden;
