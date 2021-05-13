@@ -22,6 +22,7 @@
 	var end  = 1 ;
 	var del_count = 0; 
 	var mqtt_destname;
+	var summary_name;
 	var client_id;
 	var client;
 	function getDriverId() {
@@ -71,18 +72,23 @@
 	    
 	    	if (driver_id == 0){
 			mqtt_destname = "NEXTLOCATION_0";
+			summary_name = "SUMMARY_0";
 		}	
 	    	else if (driver_id == 1){
 			mqtt_destname = "NEXTLOCATION_1";
+			summary_name = "SUMMARY_1";
 		}
 	    	else if (driver_id == 2){
 			mqtt_destname = "NEXTLOCATION_2";
+			summary_name = "SUMMARY_2";
 		}
 		else {
 			mqtt_destname = "NEXTLOCATION_-1";
+			summary_name = "SUMMARY_-1";
 		}
 	    console.log(mqtt_destname);
-		client.subscribe(mqtt_destname);
+	    client.subscribe(mqtt_destname);
+	    client.subscribe(summary_name);
     }
     function doFail(e){
     console.log(e);
