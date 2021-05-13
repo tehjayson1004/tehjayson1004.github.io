@@ -115,33 +115,36 @@
 		}
 	    	if (message.destinationName === "SUMMARY_0") {
 			console.log("ended");
-			let speed = 1;
-			let distance = 4;
-			let time = 5;
-			let eff = 2;
-			let aptitude = 3;
+			let message = JSON.parse(message.payloadString);
+			let speed = message.avgSpeed;
+			let distance = message.distance;
+			let time = message.time;
+			let eff = message.efficiency;
+			let aptitude = message.aptitude;
 			last.innerHTML = "SEE YOU TOMORROW" + "<br>" + "Here is your summary!" + "<br>" + "Speed: " + speed + "<br>" + "Distance: " + distance + "<br>" + "Time: " + time + "<br>" + "Efficiency: " + eff + "<br>" + "Aptitude: " + aptitude;
 			document.getElementById("last").style.display = "block";
 			document.getElementById("main").style.display = "none";
 		}
 	    	if (message.destinationName === "SUMMARY_1") {
 			console.log("ended");
-			let speed = 1;
-			let distance = 4;
-			let time = 5;
-			let eff = 2;
-			let aptitude = 3;
+			let message = JSON.parse(message.payloadString);
+			let speed = message.avgSpeed;
+			let distance = message.distance;
+			let time = message.time;
+			let eff = message.efficiency;
+			let aptitude = message.aptitude;
 			last.innerHTML = "SEE YOU TOMORROW" + "<br>" + "Here is your summary!" + "<br>" + "Speed: " + speed + "<br>" + "Distance: " + distance + "<br>" + "Time: " + time + "<br>" + "Efficiency: " + eff + "<br>" + "Aptitude: " + aptitude;
 			document.getElementById("last").style.display = "block";
 			document.getElementById("main").style.display = "none";
 		}
 	    	if (message.destinationName === "SUMMARY_2") {
 			console.log("ended");
-			let speed = 1;
-			let distance = 4;
-			let time = 5;
-			let eff = 2;
-			let aptitude = 3;
+			let message = JSON.parse(message.payloadString);
+			let speed = message.avgSpeed;
+			let distance = message.distance;
+			let time = message.time;
+			let eff = message.efficiency;
+			let aptitude = message.aptitude;
 			last.innerHTML = "SEE YOU TOMORROW" + "<br>" + "Here is your summary!" + "<br>" + "Speed: " + speed + "<br>" + "Distance: " + distance + "<br>" + "Time: " + time + "<br>" + "Efficiency: " + eff + "<br>" + "Aptitude: " + aptitude;
 			document.getElementById("last").style.display = "block";
 			document.getElementById("main").style.display = "none";
