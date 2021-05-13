@@ -116,7 +116,7 @@
 	    	if (message.destinationName === "SUMMARY_0") {
 			console.log("ended");
 			let msg = JSON.parse(message.payloadString);
-			let speed = msg.avgSpeed;
+			let speed = parseFloat(msg.avgSpeed).toFixed(2);
 			let distance = msg.distance;
 			let time = msg.time;
 			let eff = msg.efficiency;
@@ -128,7 +128,7 @@
 	    	if (message.destinationName === "SUMMARY_1") {
 			console.log("ended");
 			let msg = JSON.parse(message.payloadString);
-			let speed = msg.avgSpeed;
+			let speed = parseFloat(msg.avgSpeed).toFixed(2);
 			let distance = msg.distance;
 			let time = msg.time;
 			let eff = msg.efficiency;
@@ -140,7 +140,7 @@
 	    	if (message.destinationName === "SUMMARY_2") {
 			console.log("ended");
 			let msg = JSON.parse(message.payloadString);
-			let speed = msg.avgSpeed;
+			let speed = parseFloat(msg.avgSpeed).toFixed(2);
 			let distance = msg.distance;
 			let time = msg.time;
 			let eff = msg.efficiency;
