@@ -85,7 +85,7 @@ body {
 	color: #BA55D3;
 	padding: 50px 50px 50px 50px;
 	background-color: #FFFACD;
-	border-radius: 8px;
+	border-radius: 15px;
 	border: 5px solid #BA55D3;
 	cursor:pointer;
 	text-align:	center;
@@ -97,7 +97,7 @@ body {
 	color: #FFFACD;
 	padding: 50px 50px 50px 50px;
 	background-color: #BA55D3;
-	border-radius: 8px;
+	border-radius: 15px;
 	border: 5px solid #BA55D3;
 	text-align: center;
 	cursor:pointer;
@@ -113,7 +113,12 @@ body {
 
 #reach{
 
-	vertical-align: top;
+	margin: 0;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
 	overflow: hidden;
 	
 }
