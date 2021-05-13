@@ -43,7 +43,7 @@
     function onConnect() {
 		console.log("onConnect");
 	    
-	    	if (driver_id == 0){
+	   /* 	if (driver_id == 0){
 			mqtt_destname = "NEXTLOCATION_0";
 		}	
 	    	else if (driver_id == 1){
@@ -58,6 +58,7 @@
 		//var mqtt_destname = "NEXTLOCATION_1";	
 	    	console.log(mqtt_destname);
 		client.subscribe(mqtt_destname);
+		*/
     }
     function doFail(e){
     console.log(e);
