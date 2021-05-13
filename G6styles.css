@@ -94,26 +94,15 @@ body {
 .button3{
 	font-size: 100px;
 	font-weight: bold;
-	color: #BA55D3;
+	color: #FFFACD;
 	padding: 50px 50px 50px 50px;
-	background-color: #FFFB2F;
+	background-color: #BA55D3;
 	border-radius: 8px;
-	border: 5px solid #FFFB2F;
+	border: 5px solid #BA55D3;
 	text-align: center;
 	cursor:pointer;
 }
 
-.button4{
-	font-size: 10px;
-	font-weight: bold;
-	color: #BA55D3;
-	padding: 50px 50px 50px 50px;
-	background-color: #FFFACD;
-	border-radius: 8px;
-	border: 2px solid #BA55D3;
-	text-align: center;
-	cursor:pointer;
-}
 
 #main{
 	margin:auto;
