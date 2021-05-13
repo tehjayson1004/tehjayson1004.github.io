@@ -85,18 +85,19 @@ body {
 	color: #BA55D3;
 	padding: 50px 50px 50px 50px;
 	background-color: #FFFACD;
-	border-radius: 30px;
+	border-radius: 8px;
 	border: 5px solid #BA55D3;
 	cursor:pointer;
 	text-align:	center;
 }
 
 .button3{
-	font-size: 50px;
+	font-size: 100px;
 	font-weight: bold;
 	color: #BA55D3;
+	padding: 50px 50px 50px 50px;
 	background-color: #FFFB2F;
-	border-radius: 30px;
+	border-radius: 8px;
 	border: 5px solid #FFFB2F;
 	text-align: center;
 	cursor:pointer;
@@ -106,8 +107,9 @@ body {
 	font-size: 10px;
 	font-weight: bold;
 	color: #BA55D3;
+	padding: 50px 50px 50px 50px;
 	background-color: #FFFACD;
-	border-radius: 12px;
+	border-radius: 8px;
 	border: 2px solid #BA55D3;
 	text-align: center;
 	cursor:pointer;
