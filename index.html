@@ -107,6 +107,16 @@
 			var result = "NEXT LOCATION : " + message.payloadString + "";
 			document.getElementById("submsg").innerHTML = result;
 		}
+	    	if (message.destinationName === "SUMMARY_0") {
+			let speed = 1;
+			let distance = 4;
+			let time = 5;
+			let eff = 2;
+			let aptitude = 3;
+			last.innerHTML = "SEE YOU TOMORROW" + "<br>" + "Here is your summary!" + "<br>" + "Speed: " + speed + "<br>" + "Distance: " + distance + "<br>" + "Time: " + time + "<br>" + "Efficiency: " + eff + "<br>" + "Aptitude: " + aptitude;
+			document.getElementById("last").style.display = "block";
+			document.getElementById("main").style.display = "none";
+		}
     }
 	  
 	function initGeolocation() {
@@ -178,14 +188,6 @@
 		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
 		endmsg.destinationName = "ENDWORK_" + driver_id;
   		client.send(endmsg);
-		let speed = 1;
-		let distance = 4;
-		let time = 5;
-		let eff = 2;
-		let aptitude = 3;
-		last.innerHTML = "SEE YOU TOMORROW" + "<br>" + "Here is your summary!" + "<br>" + "Speed: " + speed + "<br>" + "Distance: " + distance + "<br>" + "Time: " + time + "<br>" + "Efficiency: " + eff + "<br>" + "Aptitude: " + aptitude;
-		document.getElementById("last").style.display = "block";
-		document.getElementById("main").style.display = "none";
 	}
 	  		
 	function showData() {
