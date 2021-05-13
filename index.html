@@ -180,9 +180,9 @@
 	}
 	
 	function endWork() {	
-		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
-		endmsg.destinationName = "ENDWORK_" + driver_id;
-  		client.send(endmsg);
+		//endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
+		//endmsg.destinationName = "ENDWORK_" + driver_id;
+  		//client.send(endmsg);
 		last.innerHTML = "SEE YOU TOMORROW";
 		document.getElementById("last").style.display = "block";
 		document.getElementById("main").style.display = "none";
