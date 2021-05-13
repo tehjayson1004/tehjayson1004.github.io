@@ -3,7 +3,6 @@
   <title>Extract Sensor</title>
   <link rel="stylesheet" href="G6styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-  <script src="fader.js"></script>
   <script type="text/javascript">
 	var mqtt;
 	var reconnectTimeout = 2000;
@@ -23,27 +22,54 @@
 	var end  = 1 ;
 	var del_count = 0; 
 	var mqtt_destname;
-	// Create a client instance
-    var client = new Paho.MQTT.Client(host, port,"client_id");
-    //Example client = new Paho.MQTT.Client("m11.cloudmqtt.com", 32903, "web_" + parseInt(Math.random() * 100, 10));
+	var client_id;
+	var client;
+	function getDriverId() {
+		pw = document.getElementById("pw");
+		switch (pw.value) {
+			case "asd":
+				driver_id = 0;
+				corr = 1;
+				break;
+			case "tan":
+				driver_id = 1;	
+				corr = 1;
+				break;
+			case "chuah":
+				driver_id = 2;
+				corr = 1;
+				break;
+			default:
+				driver_id = -1;
+				alert("WRONG PASSWORD");
+		}
+		
+		if (corr ==1){
+			document.getElementById("start").style.display = "block";
+			document.getElementById("pass").style.display = "none";
+			document.getElementById("status").innerHTML= "STATUS: ONLINE";
+		}
+		
+		client_id = "driver_id" + driver_id;
+		client = new Paho.MQTT.Client(host, port,client_id);	
+		client.onConnectionLost = onConnectionLost;
+		client.onMessageArrived = onMessageArrived;
+		var options = {
+			useSSL: true,
+			userName: "odzguzja",
+			password: "XIC7binxmQ8e",
+			onSuccess:onConnect,
+			onFailure:doFail
+		}
+		client.connect(options);
+		onConnect();
+		
+	}
 	
-    // set callback handlers
-    client.onConnectionLost = onConnectionLost;
-    client.onMessageArrived = onMessageArrived;
-    var options = {
-    useSSL: true,
-    userName: "odzguzja",
-    password: "XIC7binxmQ8e",
-    onSuccess:onConnect,
-    onFailure:doFail
-    }
-    // connect the client
-    client.connect(options);
-    // called when the client connects
     function onConnect() {
 		console.log("onConnect");
 	    
-	   /* 	if (driver_id == 0){
+	    	if (driver_id == 0){
 			mqtt_destname = "NEXTLOCATION_0";
 		}	
 	    	else if (driver_id == 1){
@@ -55,10 +81,8 @@
 		else {
 			mqtt_destname = "NEXTLOCATION_-1";
 		}
-		//var mqtt_destname = "NEXTLOCATION_1";	
-	    	console.log(mqtt_destname);
+	    console.log(mqtt_destname);
 		client.subscribe(mqtt_destname);
-		*/
     }
     function doFail(e){
     console.log(e);
@@ -71,7 +95,7 @@
     }
     // called when a message arrives
     function onMessageArrived(message) {
-		/*if (message.destinationName === "NEXTLOCATION_0") {
+		if (message.destinationName === "NEXTLOCATION_0") {
 			var result = "NEXT LOCATION : " + message.payloadString + "";
 			document.getElementById("submsg").innerHTML = result;
 		}
@@ -82,7 +106,7 @@
 		if (message.destinationName === "NEXTLOCATION_2") {
 			var result = "NEXT LOCATION : " + message.payloadString + "";
 			document.getElementById("submsg").innerHTML = result;
-		}*/
+		}
     }
 	  
 	function initGeolocation() {
@@ -112,6 +136,7 @@
 	  console.log("DeviceMotionEvent is not supported");
 	}
 	  
+	
 	function handleMotion(acl){
 		//acl.start();
 		console.log(acl);
@@ -124,36 +149,6 @@
 		acc_message.destinationName = "ACC_" + driver_id;
 		client.send(acc_message);
 		console.log("Acceleration Published");
-	}
-	  
-	function getDriverId() {
-		pw = document.getElementById("pw");
-		switch (pw.value) {
-			case "asd":
-				driver_id = 0;
-				corr = 1;
-				break;
-			case "tan":
-				driver_id = 1;	
-				corr = 1;
-				break;
-			case "chuah":
-				driver_id = 2;
-				corr = 1;
-				break;
-			default:
-				driver_id = -1;
-				alert("WRONG PASSWORD");
-		}
-		
-		if (corr ==1){
-			document.getElementById("start").style.display = "block";
-			document.getElementById("pass").style.display = "none";
-			document.getElementById("status").innerHTML= "STATUS: ONLINE";
-		}
-		
-		onConnect();
-		console.log("suc");
 	}
 	
 	function startWork() {
@@ -180,9 +175,9 @@
 	}
 	
 	function endWork() {	
-		//endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
-		//endmsg.destinationName = "ENDWORK_" + driver_id;
-  		//client.send(endmsg);
+		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
+		endmsg.destinationName = "ENDWORK_" + driver_id;
+  		client.send(endmsg);
 		last.innerHTML = "SEE YOU TOMORROW";
 		document.getElementById("last").style.display = "block";
 		document.getElementById("main").style.display = "none";
