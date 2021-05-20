@@ -94,6 +94,7 @@
 	    console.log(mqtt_destname);
 	    client.subscribe(mqtt_destname);
 	    client.subscribe(summary_name);
+	    client.subscribe(reach_error);
     }
     function doFail(e){
     console.log(e);
