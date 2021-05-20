@@ -23,6 +23,7 @@
 	var del_count = 0; 
 	var mqtt_destname;
 	var summary_name;
+	var reach_error;
 	var client_id;
 	var client;
 	function getDriverId() {
@@ -73,14 +74,18 @@
 	    	if (driver_id == 0){
 			mqtt_destname = "NEXTLOCATION_0";
 			summary_name = "SUMMARY_0";
+			reach_error = "REACH_ERROR_0";
 		}	
 	    	else if (driver_id == 1){
 			mqtt_destname = "NEXTLOCATION_1";
 			summary_name = "SUMMARY_1";
+			reach_error = "REACH_ERROR_1";
+
 		}
 	    	else if (driver_id == 2){
 			mqtt_destname = "NEXTLOCATION_2";
 			summary_name = "SUMMARY_2";
+			reach_error = "REACH_ERROR_2";
 		}
 		else {
 			mqtt_destname = "NEXTLOCATION_-1";
@@ -149,6 +154,24 @@
 			document.getElementById("last").style.display = "block";
 			document.getElementById("main").style.display = "none";
 		}
+	   	if (message.destinationName === "REACH_ERROR_0"){
+			console.log("go nearer 0");
+			let msg = JSON.parse(message.payloadString);
+			alert("YOU ARE");
+		}
+	    
+	    	if (message.destinationName === "REACH_ERROR_1"){
+			console.log("go nearer 1");
+			let msg = JSON.parse(message.payloadString);
+			alert("YOU ARE");
+		}
+	    	if (message.destinationName === "REACH_ERROR_2"){
+			console.log("go nearer 2");
+			let msg = JSON.parse(message.payloadString);
+			alert("YOU ARE");
+		}
+	    
+	    	
     }
 	  
 	function initGeolocation() {
