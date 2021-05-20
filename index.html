@@ -157,19 +157,19 @@
 		}
 	   	if (message.destinationName === "REACH_ERROR_0"){
 			console.log("go nearer 0");
-			let msg = JSON.parse(message.payloadString);
-			alert("YOU ARE" + msg);
+			let msg = message.payloadString;
+			alert("YOU ARE" + msg + "m away");
 		}
 	    
 	    	if (message.destinationName === "REACH_ERROR_1"){
 			console.log("go nearer 1");
-			let msg = JSON.parse(message.payloadString);
-			alert("YOU ARE" + msg);
+			let msg = message.payloadString;
+			alert("YOU ARE" + msg + "m away");
 		}
 	    	if (message.destinationName === "REACH_ERROR_2"){
 			console.log("go nearer 2");
-			let msg = JSON.parse(message.payloadString);
-			alert("YOU ARE" + msg);
+			let msg = message.payloadString;
+			alert("YOU ARE" + msg  + "m away");
 		}
 	    
 	    	
