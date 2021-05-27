@@ -102,18 +102,7 @@
 	  
     // called when the client loses its connection
     function onConnectionLost(responseObject) {
-    	client = new Paho.MQTT.Client(host, port,client_id);	
-	client.onConnectionLost = onConnectionLost;
-	client.onMessageArrived = onMessageArrived;
-	var options = {
-			useSSL: true,
-			userName: "odzguzja",
-			password: "XIC7binxmQ8e",
-			onSuccess:onConnect,
-			onFailure:doFail
-	}
-	client.connect(options);
-	onConnect();
+    	client.reconnect();
     }
 	  
     // called when a message arrives
