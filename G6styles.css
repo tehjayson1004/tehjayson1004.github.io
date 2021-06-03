@@ -63,27 +63,27 @@ body {
 	font-size: 100%;
 	text-align:center;
 }
-
-
 .button2{
-	font-size: 		30px;
-	font-size: 		60px;
+	font-size: 		100px;
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-weight: bold;
 	color: #BA55D3;
+	padding: 50px 50px 50px 50px;
 	background-color: #FFFACD;
-	border-radius: 12px;
-	border: 3px solid #BA55D3;
+	border-radius: 15px;
+	border: 20px solid #BA55D3;
 	cursor:pointer;
 	text-align:	center;
 }
+
 .button3{
-	font-size: 20px;
+	font-size: 50px;
 	font-weight: bold;
-	color: #BA55D3;
-	background-color: #FFFACD;
-	border-radius: 12px;
-	border: 3px solid #BA55D3;
+	color: #FFFACD;
+	padding: 20px 20px 20px 20px;
+	background-color: #BA55D3;
+	border-radius: 20px;
+	border: 5px solid #BA55D3;
 	text-align: center;
 	cursor:pointer;
 }
@@ -92,8 +92,33 @@ body {
 	width: 50%;
 	text-align: center;
 }
-#reach{
-	vertical-align: top;
+#reach1{
+	margin: 0;
+  	position: absolute;
+  	top: 60%;
+  	left: 20%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+	overflow: hidden;
+	
+}
+#reach2{
+	margin: 0;
+  	position: absolute;
+  	top: 60%;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+	overflow: hidden;
+	
+}
+#reach3{
+	margin: 0;
+  	position: absolute;
+  	top: 60%;
+  	left: 80%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
 	overflow: hidden;
 	
 }
@@ -103,3 +128,8 @@ body {
 	overflow: hidden;
 }
 .innerxt{
+	font-size: 25px;
+	font-style: italic;
+	color:  #BA55D3;
+	line-height:2.5;
+}
