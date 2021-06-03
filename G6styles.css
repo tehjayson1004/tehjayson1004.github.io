@@ -63,8 +63,11 @@ body {
 	font-size: 100%;
 	text-align:center;
 }
+
+
 .button2{
 	font-size: 		30px;
+	font-size: 		60px;
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-weight: bold;
 	color: #BA55D3;
@@ -90,10 +93,9 @@ body {
 	text-align: center;
 }
 #reach{
-
 	vertical-align: top;
 	overflow: hidden;
-
+	
 }
 #data{
 	vertical-align: top;
@@ -101,8 +103,3 @@ body {
 	overflow: hidden;
 }
 .innerxt{
-	font-size: 25px;
-	font-style: italic;
-	color:  #BA55D3;
-	line-height:2.5;
-}
