@@ -243,6 +243,7 @@
 	}
 	
 	function endWork() {	
+		console.log("work");
 		endmsg = new Paho.MQTT.Message(driver_id + "," + location_array[0] + "," + location_array[1] + "," + end);
 		endmsg.destinationName = "ENDWORK_" + driver_id;
   		client.send(endmsg);
