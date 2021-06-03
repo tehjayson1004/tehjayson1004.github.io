@@ -3,18 +3,14 @@ body {
   height: 100vh;
   background-color: #FFFACD;
 }
-
 #pass {
 	width:	40%;
 	margin:auto;
 	text-align:center;
 }	
-
 #start{
 	text-align:center;
 }
-
-
 .inpass{
 	font-size: 		200%;
 	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
@@ -22,7 +18,6 @@ body {
 	color: 			#A020F0;
 	left:  			45%;
 }
-
 .twopass{
 	font-size: 		200%;
 	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
@@ -30,7 +25,6 @@ body {
 	color: 			#BA55D3;
 	left:  			45%;
 }
-
 .stxt{
 	font-size: 		200%;
 	font-family: 	"Comic Sans MS", "Comic Sans", cursive;
@@ -38,20 +32,15 @@ body {
 	color: 			#BA55D3;
 	text-align:		center;
 }
-
-
 .logo{
 	display: 		block;
 	margin: 		auto;
 	width:			50%;
 	text-align:		center;
 }
-
 .cute{
 	width:		100%;
 }
-
-
 .button1{
 	font-size: 			30px;
 	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
@@ -63,7 +52,6 @@ body {
 	cursor:				pointer;
 	text-align:			center;
 }
-
 .inputxt{
 	font-size: 			30px;
 	font-family: 		"Comic Sans MS", "Comic Sans", cursive;
@@ -71,91 +59,47 @@ body {
 	font-weight: 		bold;	
 	text-align: center;
 }
-
 .inbox{
 	font-size: 100%;
 	text-align:center;
 }
-
-
 .button2{
-	font-size: 		100px;
+	font-size: 		30px;
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	font-weight: bold;
 	color: #BA55D3;
-	padding: 50px 50px 50px 50px;
 	background-color: #FFFACD;
-	border-radius: 15px;
-	border: 20px solid #BA55D3;
+	border-radius: 12px;
+	border: 3px solid #BA55D3;
 	cursor:pointer;
 	text-align:	center;
 }
-
 .button3{
-	font-size: 50px;
+	font-size: 20px;
 	font-weight: bold;
-	color: #FFFACD;
-	padding: 20px 20px 20px 20px;
-	background-color: #BA55D3;
-	border-radius: 20px;
-	border: 5px solid #BA55D3;
+	color: #BA55D3;
+	background-color: #FFFACD;
+	border-radius: 12px;
+	border: 3px solid #BA55D3;
 	text-align: center;
 	cursor:pointer;
 }
-
-
 #main{
 	margin:auto;
 	width: 50%;
 	text-align: center;
 }
+#reach{
 
-
-#reach1{
-
-	margin: 0;
-  	position: absolute;
-  	top: 60%;
-  	left: 20%;
-  	-ms-transform: translate(-50%, -50%);
-  	transform: translate(-50%, -50%);
+	vertical-align: top;
 	overflow: hidden;
-	
+
 }
-
-
-#reach2{
-
-	margin: 0;
-  	position: absolute;
-  	top: 60%;
-  	left: 50%;
-  	-ms-transform: translate(-50%, -50%);
-  	transform: translate(-50%, -50%);
-	overflow: hidden;
-	
-}
-
-
-#reach3{
-
-	margin: 0;
-  	position: absolute;
-  	top: 60%;
-  	left: 80%;
-  	-ms-transform: translate(-50%, -50%);
-  	transform: translate(-50%, -50%);
-	overflow: hidden;
-	
-}
-
 #data{
-
 	vertical-align: top;
 	height: 400px;
 	overflow: hidden;
 }
-
 .innerxt{
 	font-size: 25px;
 	font-style: italic;
